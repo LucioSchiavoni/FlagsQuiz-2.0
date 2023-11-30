@@ -15,7 +15,7 @@ export const counter = (
       setPoints((prevPoints) => prevPoints + 1);
    
     } else {
-    console.log(points)
+  
 
     //aqui el mutation de graphql con value: points
     //  try {

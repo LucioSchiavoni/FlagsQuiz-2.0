@@ -3,6 +3,7 @@ import Image from 'next/image'
 import { useSession } from "next-auth/react"
 import DashboardPage from './api/dashboard/page'
 import { signIn} from "next-auth/react"
+import Link from 'next/link'
 
 
 export default function Home() {
@@ -33,10 +34,12 @@ export default function Home() {
             <p className='text-md font-semibold'>Ingresa a tu cuenta y juega</p>
             <button onClick={()=> signIn()} className='w-56 text-2xl font-semibold rounded-md bg-blue-600 text-white pb-1 '>Ingresar con google</button>
                   <button  className='w-56 text-2xl font-semibold rounded-md bg-blue-600 text-white pb-1 '>Iniciar sesion</button>
+                   <Link href='/api/register'  className='w-56 text-2xl font-semibold rounded-md bg-blue-600 text-white pb-1 text-center'>Registrarse</Link>
+                         <Link href='/api/dashboard'  className='w-56 text-2xl font-semibold rounded-md bg-blue-600 text-white pb-1 text-center'>Jugar sin cuenta</Link>
           </div>
-           <footer className='absolute bottom-2 font-semibold text-sm'>
-        <span>By Lucio Schiavoni</span>
-      </footer>
+      <div className='absolute bottom-20 font-semibold'>
+        By Lucio Schiavoni
+      </div>
       </>
         ) 
        

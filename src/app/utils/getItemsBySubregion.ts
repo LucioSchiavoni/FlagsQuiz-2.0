@@ -25,7 +25,7 @@ export const getItemsBySubregion = async(
 
         setFlagName(randomFlagName)
         setItem(selectedFlags)
-        console.log(dataFlags)
+       
     } catch (error) {
         console.log(error)
     }finally{
