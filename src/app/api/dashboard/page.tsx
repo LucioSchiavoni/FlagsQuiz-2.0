@@ -1,21 +1,14 @@
-import CardItem from '@/app/components/CardItem';
-import Navbar from '@/app/components/Navbar';
 
+import Link from 'next/link';
 
 const DashboardPage = () => {
 
 
 
   return (
-    <div className=''>
-      
-        <div className=' rounded-mx  mt-24 p-4 rounded-md'>
-          <CardItem/>
-        </div>
-        
-
-
-      
+    <div className='flex flex-col gap-10 mt-32 text-4xl font-semibold text-white justify-center items-center ' >
+      <Link href='/api/region' className='bg-blue-500 px-3 py-1 rounded-md'>Jugar por continentes</Link>
+        <Link href='/api/categories/global' className='bg-blue-500 px-3 py-1 rounded-md'>Modo experto</Link>
     </div>
   )
 }

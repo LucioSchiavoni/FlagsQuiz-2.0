@@ -31,7 +31,8 @@ export default function Home() {
            
             <h1 className='text-3xl  text-blue-700 font-bold'>Flags Quiz</h1>
             <p className='text-md font-semibold'>Ingresa a tu cuenta y juega</p>
-            <button onClick={()=> signIn()} className='w-56 text-2xl font-semibold rounded-md bg-blue-600 text-white pb-1 '>Empezar</button>
+            <button onClick={()=> signIn()} className='w-56 text-2xl font-semibold rounded-md bg-blue-600 text-white pb-1 '>Ingresar con google</button>
+                  <button  className='w-56 text-2xl font-semibold rounded-md bg-blue-600 text-white pb-1 '>Iniciar sesion</button>
           </div>
            <footer className='absolute bottom-2 font-semibold text-sm'>
         <span>By Lucio Schiavoni</span>

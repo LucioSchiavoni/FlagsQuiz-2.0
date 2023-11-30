@@ -1,19 +1,10 @@
 "use client"
-import React, { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { shuffle } from 'lodash';
 import axios from 'axios';
+import Flag from '../api/FlagInterface';
 
 
-interface Flag {
-  translations?: {
-    spa?: {
-      common?: string;
-    };
-  };
-  flags?: {
-    png?: string;
-  };
-}
 
 const CardItem: React.FC = () => {
   const [item, setItem] = useState<Flag[]>([]);
@@ -21,52 +12,51 @@ const CardItem: React.FC = () => {
   const [points, setPoints] = useState<number>(0);
   const [selectedFlag, setSelectedFlag] = useState<string | null>(null);
 
-  useEffect(() => {
-    getItems();
-  }, []);
 
 //    Usar Image de next y no img para menor carga
 
-  const getItems = async () => {
-    try {
-      const res = await axios.get<Flag[]>('https://restcountries.com/v3.1/all');
-      const allFlags = res.data;
 
-     
-      const shuffledFlags = shuffle(allFlags);
-
-      const selectedFlags = shuffledFlags.slice(0, 4);
-
-  
-      const randomFlagIndex = Math.floor(Math.random() * selectedFlags.length);
-      const randomFlagName = selectedFlags[randomFlagIndex].translations?.spa?.common || '';
-
-      setFlagName(randomFlagName);
-      setItem(selectedFlags);
-    } catch (error) {
-      console.error(error);
-    }
-  };
 
 
   const handleFlagSelection = (selectedFlagName: string) => {
     if (selectedFlagName === flagName) {
-      setPoints(points + 1);
+      setPoints((prevPoints) => prevPoints + 1);
     } else {
     console.log(points)
 
     //aqui el mutation de graphql con value: points
+    //  try {
+    //     await axios.post('URL_DEL_BACKEND', { points });
+    //   } catch (error) {
+    //     console.error('Error al enviar los puntos al backend', error);
+    //   }
+
+      //  try {
+      //   // Consulta para obtener el puntaje actual
+      //   const response = await axios.get('URL_DEL_BACKEND');
+      //   const currentPoints = response.data.points;
+
+      //   // Verifica si el nuevo puntaje es mayor antes de actualizar
+      //   if (points > currentPoints) {
+      //     // Realiza la mutación de GraphQL con value: points
+      //     await axios.post('URL_DEL_BACKEND', { points });
+      //   }
+      
+      // } catch (error) {
+      //   console.error('Error al consultar o enviar los puntos al backend', error);
+      // }
 
     setPoints(0)  
        
     }
     setSelectedFlag(selectedFlagName);
-    getItems();
+    
   };
   
 
   return (
     <>
+ 
     <div className='w-full flex flex-col'>
          <p className="bg-white w-28 shadow-xl border  ring-2 ring-blue-700 rounded-md px-1 font-semibold ">Aciertos: {points}</p>
       <div className=" mt-8 backdrop-blur-sm p-2">
